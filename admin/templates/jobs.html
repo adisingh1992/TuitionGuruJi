@@ -1,0 +1,46 @@
+
+                    <script>
+                        $(document).on("click", "#job_id", function(event){
+                            event.preventDefault();
+                            var job_id = $(this).data("value");
+                            var form_id = $("#form_id").data("value");
+                            var job_div = $($(this).parent().parent());
+                            $.ajax({
+                            type: 'POST',
+                                url: 'jobs.php',
+                                data: {form_id : form_id, job_id : job_id},
+                                success: function(data){
+                                    job_div.hide();
+                                    alert(data);
+                                },
+                                error: function(){
+                                    alert("Oops!! Something went wrong, Please try again.");
+                                }
+                            });
+                        });
+                    </script>
+                    <h2 style="font-family: comic sans ms" class="text-muted text-warning text-center">Completed Jobs Portal</h2>
+                    <br/>
+                    <span id="form_id" data-value="<?php echo $vars; ?>"></span>
+                    <?php foreach($this->jobs as $job){ ?>
+                        <div class="panel panel-info col-md-6 col-md-offset-3" style="font-family: verdana;">
+                            <div class="panel-heading">
+                                <span><strong>Job-ID #<?php echo $job["job_id"]; ?></strong></span>
+                            </div>
+                            <div class="panel-body">
+                                <span id="guardian"><strong>Guardian:</strong> <?php echo $job["guardian"]; ?></span><br/>
+                                <span id="address"><strong>Address:</strong> <?php echo $job["address"]; ?></span><br/>
+                                <span id="area"><strong>Area:</strong> <?php echo $job["area_name"]; ?></span><br/>
+                                <span id="class"><strong>Class:</strong> <?php echo $job["class_name"]; ?></span><br/>
+                                <span id="subject"><strong>Subject:</strong> <?php echo $job["subject_name"]; ?></span><br/>
+                                <span id="contact"><strong>Contact:</strong> <?php echo $job["contact"]; ?></span><br/>
+                                <span id="t_pref"><strong>Teacher-Preference:</strong> <?php echo $job["gender"]; ?></span><br/>
+                                <span id="salary"><strong>Max-Fees:</strong> <?php echo $job["salary"]; ?></span><br/>
+                                <span id="t_select"><strong>Teacher-Selected:</strong> <?php echo $job["name"]; ?></span><br/>
+                                <span id="t_contact"><strong>Teacher-Contact:</strong> <?php echo $job["t_contact"]; ?></span><br/>
+                            </div>
+                            <div class="panel-footer">
+                                <button id="job_id" class="btn btn-primary btn-outline" data-value='<?php echo $job["job_id"]; ?>'>Re-open Job</button>
+                            </div>
+                        </div>
+                    <?php } ?>

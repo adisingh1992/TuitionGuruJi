@@ -1,0 +1,113 @@
+<div class="container-fluid">
+    <div class="row" style="margin-top:50px">
+        <div class="col-md-6">
+            <div class="form-container" style="border:1px solid #ddd;border-top:none;border-radius:20px;padding: 20px">
+                <form role="form" action="register.php" method="POST">
+                    <fieldset>
+                        <p class="text-center h4 animated 1s slideInLeft" style="box-shadow:0px 0px 5px black;padding:10px;border:1px solid #111;border-top-right-radius: 20px;border-bottom-right-radius: 20px;">Register Now</p>
+                        <hr class="colorgraph">
+                        <br/>
+                        <div class="form-group form-inline">
+                            <input type="text" name="fname" id="fname" class="form-control input-lg" placeholder="First Name">&nbsp;&nbsp;
+                            <input type="text" name="lname" id="lname" class="form-control input-lg" placeholder="Last Name">
+                        </div>
+                        <div class="form-group form-inline">
+                            <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password">&nbsp;&nbsp;
+                            <input type="password" name="confirm" id="confirm" class="form-control input-lg" placeholder="Confirm Password">
+                            <input type="text" name="form_id" id="form_id" value="<?php echo $vars; ?>" hidden/>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" id="email" placeholder="Email address" class="form-control input-lg"/>
+                        </div>
+                        <div class="form-group">
+                            <a href="login.php" class="btn btn-link pull-left animated 1s fadeInUp" style="color: seagreen !important">Already registered? Log-in now!</a>
+                            <button name="register" id="register" class="btn btn-outline btn-primary pull-right" style="width:90px;height: 35px;"><i class="fa fa-pencil"></i> Sign up</button>
+                        </div><br><br>
+                        <div class="text-center">
+                            <br><br>
+                            <text class="text-muted">By continuing you agree to TuitionGuruJi's<i class="text-primary"> Terms of Services </i>and<i class="text-primary"> Privacy Policy</i></text>
+                        </div>
+                        <hr class="colorgraph">
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <br/><br/><br/>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <text class="h3 text-muted text-primary">Join as a tutor and grow your teaching skills</text>
+                </div>
+            </div>
+            <br/><hr/>
+            <div class="row text-center">
+                <div class="col-md-3">
+                    <img src="static/images/confuse.gif" width="200px" alt="confusion"/>
+                </div>
+                <div class="col-md-8 col-md-offset-1">
+                    <br/><br/>
+                    <cite class="h4 text-danger">Don't be confused!!</cite>
+                    <br/><br/>
+                    <text class="text-right text-muted">Join<strong class="text-primary"> TuitionGuruJi </strong>now, we provide you a great opportunity to enhance your teaching skill-set and earn some extra side-cash in your free time.</text>
+                </div>
+            </div>
+            <br/><hr/>
+        </div>
+    </div>
+    <br/><br/><br/>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center">
+            <text class="text-primary text-center h3">By joining<i> TuitionGuruJi </i>you will be able to</text>
+            <br/><br/><hr/>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-2 col-md-offset-2" style="padding: 10px;">
+            <br/>
+            <div class="img t_btn"><img src="static/images/users.png" height="100px" width="100px" class="img-circle" alt="users" style="box-shadow: 0px 0px 10px black; padding: 20px"></div>
+            <br/><br/>
+            <p class="h5 text-danger animated 1s jello" style="box-shadow: 0px 0px 10px black; padding:10px; border-radius: 5px;">Get more students</p>
+        </div>
+        <div class="col-md-2" style="padding: 10px;">
+            <br/>
+            <div class="img t_btn"><img src="static/images/inr.png" height="100px" width="100px" class="img-circle" alt="rupee" style="box-shadow: 0px 0px 10px black; padding: 20px"></div>
+            <br/><br/>
+            <p class="h5 text-danger animated 1s jello" style="box-shadow: 0px 0px 10px black; padding: 10px; border-radius: 5px;">Earn extra money</p>
+        </div>
+        <div class="col-md-2" style="padding: 10px;">
+            <br/>
+            <div class="img t_btn"><img src="static/images/stamp.png" height="100px" width="100px" class="img-circle" alt="stamp" style="box-shadow: 0px 0px 10px black; padding: 20px"></div>
+            <br/><br/>
+            <p class="h5 text-danger animated 1s jello" style="box-shadow: 0px 0px 10px black; padding:10px; border-radius: 5px;">Build credibility</p>
+        </div>
+        <div class="col-md-2" style="padding: 10px;">
+            <br/>
+            <div class="img t_btn"><img src="static/images/profile.png" height="100px" width="100px" class="img-circle" alt="profile" style="box-shadow: 0px 0px 10px black; padding: 20px"></div>
+            <br/><br/>
+            <p class="h5 text-danger animated 1s jello" style="box-shadow: 0px 0px 10px black; padding:10px; border-radius: 5px;">Enhance your profile</p>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <br/><hr/><br/>
+</div>
+<script>
+    function validateEmail($email) {
+        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,})?$/;
+        return emailReg.test($email);
+    }
+
+    $(function () {
+        $("#register").click(function () {
+            if ($("#form_id").val() !== "" && $("#fname").val() !== "" && $("#lname").val() !== "" && $("#email").val() !== "" && $("#password").val() !== "" && validateEmail($("#email").val())) {
+                if ($("#password").val() !== $("#confirm").val()) {
+                    alert("Passwords do not match!");
+                    return false;
+                }
+            } else {
+                alert("Please fill all fields with valid data!");
+                return false;
+            }
+        });
+    });
+</script>

@@ -1,0 +1,149 @@
+<div class="container-fluid">
+    <div class="row" style="margin-top:50px">
+        <div class="col-md-6">
+            <div class="form-container" style="border:1px solid #ddd; border-top:none; border-radius:20px; padding: 20px">
+                <form role="form" action="login.php" method="POST">
+                    <p class="text-center h4 animated 1s slideInLeft" style="box-shadow:0px 0px 5px black;padding:10px;border:1px solid #111;border-top-right-radius: 20px;border-bottom-right-radius: 20px;">Teacher Log-in</p>
+                    <hr class="colorgraph"/>
+                    <br/>
+                    <div class="form-group">
+                        <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password">
+                        <input type="text" name="form_id" id="form_id" value="<?php echo $vars; ?>" hidden/>
+                        <input type="text" name="form_type" id="form_type" value="1" hidden/>
+                    </div>
+                    <div class="form-group">
+                        <text id="changePass" class="btn btn-link pull-left animated 1s fadeInUp" style="color: seagreen !important">Forgot Password! Change it now</text>
+                        <button name="login" id="login" class="btn btn-outline btn-primary pull-right" style="width:90px;height: 35px;"><i class="fa fa-sign-in"></i> Sign in</button>
+                    </div>
+                </form>
+                <br/><br/><br/>
+                <div style="margin-top: 25px;">
+                    <form method="POST" action="login.php" role="form">
+                        <div id="email-group" style="display: none;">
+                            <div class="form-group">
+                                <input type="text" name="email1" id="email1" class="form-control input-lg" placeholder="Enter Your Email Address"/>
+                            </div>
+                            <div class="form-group" style="margin: 15px 0 25px 0;">
+                                <button id="verify" class="btn btn-outline btn-primary pull-right">Get Verification Code</button>
+                            </div>
+                            <br/><br/>
+                        </div>
+                        <div id="changePanel" style="display: none;">
+                            <div class="form-group">
+                                <input type="text" name="code" id="code" class="form-control input-lg" placeholder="Enter Verification Code"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password1" id="password1" class="form-control input-lg" placeholder="Enter New Password"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="confirm1" id="confirm1" class="form-control input-lg" placeholder="Confirm Password"/>
+                                <input type="text" name="form_id" id="form_id" value="<?php echo $vars; ?>" hidden/>
+                                <input type="text" name="form_type" id="form_type" value="2" hidden/>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-outline btn-primary pull-right" name="update-password" id="update-password" value="Update"/>
+                            </div>
+                            <br/><br/>
+                        </div>
+                    </form>
+                    <p id="response"></p>
+                </div>
+                <hr class="colorgraph"/>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <br/>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <text class="h3 text-muted text-primary text-capitalize">New to TuitionGuruJi, Register now to get started!</text>
+                </div>
+            </div>
+            <hr/>
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="register.php"><img src="static/images/register.jpg" alt="register" class="img-responsive center-block"/></a>
+                </div>
+            </div>
+            <hr/>
+        </div>
+    </div>
+    <br/><br/><br/>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center">
+            <text class="text-primary text-center h3 text-capitalize">What we offer at <i> TuitionGuruJi </i>?</text>
+            <br/><br/><hr/>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <p class="h5 text-justify" style="word-spacing:2px; line-height: 20px;"><span class="fa fa-star-o"></span> We provide a platform to connect parents and teachers with each other. By becoming a member of<strong class="text-primary"><i> TuitionGuruji </i></strong>one can find a number of teaching jobs as per his convenience.</p><br/>
+            <p class="h5 text-justify" style="word-spacing:2px; line-height: 20px;"><span class="fa fa-star-o"></span> Browse through a number of tuition jobs in <strong> Lucknow </strong> city or nearby areas with <strong class="text-primary"><i>TuitionGuruJi</i></strong>. A registered tutor can select from a range of choices to select his/her teaching criteria from a personalized dashboard.</p><br/>
+            <p class="h5 text-justify" style="word-spacing:2px; line-height: 20px;"><span class="fa fa-star-o"></span> We have numerous qualified home tuition teachers to work with students of all ages from Pre-Nursery to Intermediate, covering all academic and competitive subjects, general interest/hobby classes etc.</p><br/>
+            <p class="h5 text-justify" style="word-spacing:2px; line-height: 20px;"><span class="fa fa-star-o"></span> Register now on<strong class="text-primary"><i> TuitionGuruJi </i></strong> to access all features, enhance your teaching profile and improve your credibility. It's perfectly suitable for new as well as experienced teachers.</p><br/>
+            <hr/>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+<script>
+    function validateEmail($email) {
+        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,})?$/;
+        return emailReg.test($email);
+    }
+
+    $(function () {
+        $("#login").click(function () {
+            if ($("#form_id").val() === "" || $("#email").val() === "" || $("#password").val() === "" || !validateEmail($("#email").val())) {
+                alert("Please fill all fields with valid data..!!");
+                return false;
+            }
+        });
+    });
+</script>
+<script>
+    $(document).ready(function(){
+        $("#changePass").click(function(){
+            $("#email-group").slideToggle("slow");
+        });
+    });
+    $(document).ready(function(){
+        $("#verify").click(function(){
+            $("#changePanel").slideToggle("slow");
+        });
+    });
+</script>
+<script>
+    $(function(){
+        $("#update-password").click(function(){
+            if($("#form_type").val() === "" || $("#email1").val() === "" || $("#form_id").val() === "" || $("#password1").val() === "" || $("#password1").val() !== $("#confirm1").val()){
+                alert("Please fill all fields with valid data..!!");
+                return false;
+            }
+            $("#email1").removeAttr('disabled');
+        });
+    });
+</script>
+<script>
+    $(document).on("click", "#verify", function(event){
+        event.preventDefault();
+        var email = $("#email1").val();
+        var id = '4';
+        $.ajax({
+        type: 'POST',
+            url: 'ajax.php',
+            data: {form_id : id, email : email},
+            success: function(data){
+                $("#response").html(data);
+                $("#email1").attr('disabled', 'disabled');
+                $("#verify").text("Re-send Verification Code");
+            },
+            error: function(){
+                alert("Oops!! Something went wrong, Please try again.");
+            }
+        });
+    });
+</script>

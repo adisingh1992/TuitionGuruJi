@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+        <style>
+            body{
+                background-color: #61513c;
+            }
+            header{
+                background-color: #61513c;
+                height: 100px;
+                color: beige;
+                font-family: comic sans ms;
+            }
+            #sidebar{
+                background-color: #61513c;
+                color: beige;
+                font-family: fantasy;
+                min-height: 85%;
+            }
+            .sidebar_text{
+                color: burlywood;
+                margin: 0;
+            }
+            .sidebar_padding{
+                padding: 2%;
+            }
+            #content{
+                background-color: beige;
+                min-height: 85%;
+                border-left: 10px ridge #61513c;
+                border-top: 10px ridge #61513c;
+                border-right: 10px groove #61513c;
+                border-bottom: 10px groove #61513c;
+            }
+            .btn-outline {
+                background-color: transparent;
+                color: inherit;
+                transition: all .5s;
+            }
+
+            .btn-primary.btn-outline {
+                color: #428bca;
+            }
+
+            .btn-primary.btn-outline:hover{
+                color: #fff;
+            }
+        </style>
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    </head>
+    <body>
+        <header class="container-fluid text-center">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="home.php" style="color: beige; text-decoration: none;"><h2>TUITIONGURUJI</h2></a>
+                    <h4><strong><span class="glyphicon glyphicon-cog"></span> ADMIN PANEL <span class="glyphicon glyphicon-cog"></span></strong></h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="logout.php" class="pull-right" style="color: beige; text-decoration: none;"><h4>Logout <span class="glyphicon glyphicon-log-out"></span></h4></a>
+                </div>
+            </div>
+        </header>
+        <div class="container-fluid">
+            <div class="row">
+                <div id="sidebar" class="col-md-2"><br/><br/>
+                    <div class="row sidebar_text">
+                        <div class="col-md-12 text-center well sidebar_padding">
+                            <span class="glyphicon glyphicon-eye-close" style="font-size: 50px;"></span><br/>
+                            <a href="verify-users.php" style="font-size: 18px;">Manage Teachers</a>
+                        </div>
+                    </div>
+                    <div class="row sidebar_text">
+                        <div class="col-md-12 text-center well sidebar_padding">
+                            <span class="glyphicon glyphicon-check" style="font-size: 50px;"></span><br/>
+                            <a href="verify-jobs.php" style="font-size: 18px;">Verify Jobs</a>
+                        </div>
+                    </div>
+                    <div class="row sidebar_text">
+                        <div class="col-md-12 text-center well sidebar_padding">
+                            <span class="glyphicon glyphicon-info-sign" style="font-size: 50px;"></span><br/>
+                            <a href="latest-jobs.php" style="font-size: 18px;">Incomplete Jobs</a>
+                        </div>
+                    </div>
+                    <div class="row sidebar_text">
+                        <div class="col-md-12 text-center well sidebar_padding">
+                            <span class="glyphicon glyphicon-tasks" style="font-size: 50px;"></span><br/>
+                            <a href="jobs.php" style="font-size: 18px;">Completed Jobs</a>
+                        </div>
+                    </div>
+                    <div class="row sidebar_text">
+                        <div class="col-md-12 text-center well sidebar_padding">
+                            <span class="glyphicon glyphicon-tasks" style="font-size: 50px;"></span><br/>
+                            <a href="feedback.php" style="font-size: 18px;">Feedbacks</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10" id="content">

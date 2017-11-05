@@ -1,0 +1,63 @@
+                <br/><br/><br/>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 well" style="border: 2px solid #ddd;">
+                        <br/>
+                        <div class="row">
+                            <div class="col-md-3 text-center">
+                                <br/>
+                                <img src="picture.php?image=<?php echo $this->user[0]['id']; ?>&name=profile" alt="profile pic" style="border-radius: 50%; border: 5px solid #ddd;"/>
+                            </div>
+                            <div class="col-md-8 text-center" style="border-left: 2px solid #ddd;">
+                                <h3 id="name">Name: <?php echo $this->user[0]["fname"]." ".$this->user[0]["lname"]; ?></h3>
+                                <span id="address" class="text-capitalize"><b>Address: </b><?php echo $this->user[0]["address"]; ?></span><br/>
+                                <span id="email"><b>E-mail: </b><?php echo $this->user[0]["email"]; ?></span><br/>
+                                <span id="contact"><b>Contact: </b><?php echo $this->user[0]["contact"]; ?></span>&nbsp;
+                                <span id="gender"><b>Gender: </b><?php echo $this->user[0]["gender"]; ?></span><br/>
+                                <span id="salary"><b>Salary: </b><?php echo $this->user[0]["salary"]; ?></span>&nbsp;
+                                <span id="exp"><b>Experience: </b><?php echo $this->user[0]["experience"]; ?> Years</span>&nbsp;
+                                <span id="qualification"><b>Qualification: </b><?php echo $this->user[0]["qualification"]; ?></span>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <blockquote class="col-md-8 col-md-offset-2"><small id="bio">Bio: <?php echo $this->user[0]["bio"]; ?></small></blockquote>
+                            <div class="col-md-2"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 text-center">
+                                <a href="picture.php?image=<?php echo $this->user[0]['id']; ?>&name=id-proof" target="_blank">View Id Proof</a>&nbsp;&nbsp;
+                                <a href="picture.php?image=<?php echo $this->user[0]['id']; ?>&name=edu-proof" target="_blank">View Education Certificate</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 col-md-offset-8">
+                            <form action="user.php" method="POST">
+                                <input name="form_id" id="form_id" value="<?php echo $vars; ?>" hidden />
+                                <input name="user_id" id="user_id" value='<?php echo $this->user[0]["id"]; ?>' hidden />
+                                <button type="submit" class="btn btn-primary btn-outline">Delete User</button>
+                            </form>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h2 class="text-center text-info">Jobs Applied</h2>
+                        <?php foreach($this->jobs as $job){ ?>
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 panel panel-default">
+                                <div class="panel-heading"><b>Job-ID: #<?php echo $job["job_id"]; ?></b></div>
+                                <div class="panel-body row">
+                                    <b class="col-md-2">Area: </b><div class="col-md-10"><?php echo $job["area_name"]; ?>, Lucknow</div><br/>
+                                    <b class="col-md-2">Class: </b><div class="col-md-10"><?php echo $job["class_name"]; ?></div><br/>
+                                    <b class="col-md-2">Subject: </b><div class="col-md-10"><?php echo $job["subject_name"]; ?></div>
+                                </div>
+                                <div class="panel-footer"></div>
+                            </div>
+                        </div>
+                        <?php } ?>
+                    </div>
+                </div>

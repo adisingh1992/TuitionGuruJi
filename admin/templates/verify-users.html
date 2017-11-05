@@ -1,0 +1,14 @@
+
+                    <div style="margin-top: 2%; font-family: verdana;">
+                        <h2 style="font-family: comic sans ms" class="text-muted text-warning text-center">Teachers Management Portal</h2>
+                        <br/>
+                    <?php foreach($this->users as $user){ ?>
+                        
+                        <div class="col-md-6 col-md-offset-3 panel panel-info">
+                            <div class="panel-heading"><strong>Id #<?php echo $user['id']; ?></strong></div>
+                            <div class="panel-body"><span id="name"><strong>Name:</strong> <?php echo $user["fname"]." ".$user["lname"]; ?></span></div>
+                            <div class="panel-footer"><a href="user.php?id=<?php echo $user['id']; ?>"><button class="btn btn-primary btn-outline">View</button></a></div>
+                        </div>
+                    <?php } ?>
+                    
+                    </div>

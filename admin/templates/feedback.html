@@ -1,0 +1,15 @@
+                    <h2 style="font-family: comic sans ms" class="text-muted text-warning text-center">Feedbacks Portal</h2>
+                    <br/>
+                    <?php foreach($this->feedbacks as $feedback){ ?>
+                        <div class="panel panel-info col-md-6 col-md-offset-3" style="font-family: verdana;">
+                            <div class="panel-heading">
+                                <span><strong>Feedback-ID #<?php echo $feedback["feedback_id"]; ?></strong></span>
+                            </div>
+                            <div class="panel-body">
+                                <span id="guardian"><strong>Name:</strong> <?php echo $feedback["name"]; ?></span><br/>
+                                <span id="address"><strong>E-mail:</strong> <?php echo $feedback["email"]; ?></span><br/>
+                                <span id="area"><strong>Topic:</strong> <?php echo $feedback["topic"]; ?></span><br/>
+                                <span id="class"><strong>Message:</strong> <?php echo $feedback["message"]; ?></span><br/>
+                            </div>
+                        </div>
+                    <?php } ?>

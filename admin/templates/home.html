@@ -1,0 +1,30 @@
+
+                    <script>
+                        $(function(){
+                            $("#update-password").click(function(){
+                                if($("#form_id").val() === "" || $("#password").val() === "" || $("#password").val() !== $("#confirm").val()){
+                                    alert("Please fill all fields with valid data..!!");
+                                    return false;
+                                }
+                            });
+                        });
+                    </script>
+                    <div class="row" style="margin-top: 5%; padding: 5%;">
+                        <div class="col-md-4 col-md-offset-4">
+                            <fieldset>
+                                <legend class="text-center">Change Admin Password</legend>
+                                <form method="POST" action="home.php" class="form-horizontal">
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" name="password" id="password" placeholder="Enter New Password"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="confirm" id="confirm" placeholder="Confirm Password"/>
+                                    </div>
+                                    <input type="text" name="form_id" id="form_id" value="<?php echo $vars; ?>" hidden/>
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-primary form-control" name="update-password" id="update-password" value="Update"/>
+                                    </div>
+                                </form>
+                            </fieldset>
+                        </div>
+                    </div>

@@ -1,0 +1,185 @@
+<div class="container-fluid">
+    <br>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color:#111; color:whitesmoke;">
+                    <img src="static/images/update.gif" class="pull-left" height="35px">
+                    <h4 class=" animated 1s fadeInDown">&nbsp;&nbsp;Profile Update</h4>
+                </div>
+                <div class="panel-body">           
+                    <div class="profile-container" style="box-shadow: 0px 0px 10px gray;padding: 20px">
+                        <div class="row" style="">
+                            <br>
+                            <div class="col-md-6">
+                                <blockquote><span class="text-danger"><small>Just fill out the whole form to update your profile & become a verified member of <strong>TuitionGuruJi</strong>. You are advised to provide legitimate data so that your profile can be approved as soon as possible.<br/><b> Note that all fields are mandatory!</b></small></span></blockquote><br><br>
+                                <span><text class=" h4 text-primary">Name :</text> <?php echo $_SESSION["user"]["fname"]; echo " ".$_SESSION["user"]["lname"]; ?></span><br><br>
+                                <span><text class=" h4 text-primary">E-mail :</text> <?php echo $_SESSION["user"]["email"]; ?></span>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="static/images/thinking.gif" class=" pull-right" width="200px" height="200px" / >
+                            </div>
+                        </div>
+                        <br>
+                        <form method="POST" class="form" enctype="multipart/form-data">
+                            <div class="form-group row">
+                                <label for="contact" class="h4 text-primary col-sm-2 col-form-label">Contact No:</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" pattern="\d*" name="contact" id="contact" placeholder="Enter your mobile number" maxlength="10" minlength="10" required/>
+                                </div>
+                                <label for="gender"  class="h4 text-primary col-sm-2 col-form-label">Gender:</label>
+                                <div class="col-md-4" data-toggle="buttons" style="margin-top: 0px !important">
+                                    <label class="btn btn-default btn-circle btn-lg">
+                                    <input type="radio" name="gender" id="gender" value="Male" required/><i class="fa fa-user" style="font-size: 22px"></i></label>
+                                    <label class="btn btn-default btn-circle btn-lg">
+                                    <input type="radio" name="gender" id="gender" value="Female" required/><i class="fa fa-female" style="font-size:22px"></i></label>
+                                </div>
+                            </div>
+                            <div class="form-group row">    
+                                <label for="address" class="h4 text-primary col-sm-2 col-form-label">Address:</label>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" name="address" id="address" placeholder="Enter your address" maxlength="255" required/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="area" class="h4  text-primary col-sm-2 col-form-label">Select Region:</label>
+                                <div class="col-md-5">
+                                    <select name="area[]" id="area[]" multiple="multiple" required style="box-shadow:inset 0px 0px 10px black !important;border-radius: 5px;padding:5px !important;">
+                                        <?php foreach($this->area as $area){ ?>
+                                        <option class="text-center" value="<?php echo $area['area_id']; ?>" style="border-bottom: 1px dashed #ddd"><?php echo $area['area_name']; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <fieldset style="border-radius: 15px;">
+                                    <legend style="border:none;"><span class="text-muted">Select Class and Subjects</span></legend>
+                                    <text class="text-success"><small>You can choose multiple classes with multiple subjects using <strong>Add</strong> and <strong>Remove</strong> buttons<sup>*</sup></small></text>
+                                    <div id="subject_select">
+                                        <div class="pull-right">
+                                            <button class="btn btn-outline btn-success" id="add">ADD</button>
+                                            <button class="btn btn-outline btn-danger" id="remove">REMOVE</button>
+                                        </div>
+                                        <select class="btn" name="class[]" id="class" data-value="1" required style="padding:15px !important;background-color: #42464c;opacity:0.8; color:#fff !important; margin:10px !important;width: 60%;">
+                                            <option value="0">Select Class</option>
+                                            <option value="1">Nursery</option>
+                                            <option value="2">KG</option>
+                                            <option value="3">First</option>
+                                            <option value="4">Second</option>
+                                            <option value="5">Third</option>
+                                            <option value="6">Fourth</option>
+                                            <option value="7">Fifth</option>
+                                            <option value="8">Sixth</option>
+                                            <option value="9">Seventh</option>
+                                            <option value="10">Eighth</option>
+                                            <option value="11">Ninth</option>
+                                            <option value="12">Tenth</option>
+                                            <option value="13">Eleventh</option>
+                                            <option value="14">Twelfth</option>
+                                        </select>
+                                        <br>
+                                        <select class="" name="subject[]" id="subject1" required style="padding:15px !important;border:1px solid #ddd!important;border-top:none !important;border-radius:10px;margin: 10px;width: 60%;"></select>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="form-group row">
+                                <label for="experience" class="h4 text-primary col-sm-2 col-form-label">Experience:</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" pattern="\d*" name="experience" id="experience" placeholder="Enter your teaching experience in years" maxlength="2" required/>
+                                </div>
+                                <label for="salary" class="text-right h4 text-primary col-sm-2 col-form-label">Salary:</label>
+                                <div class="col-md-4">           
+                                    <input type="text" class="form-control" pattern="\d*" name="salary" id="salary" placeholder="Enter your minimum salary expectation" maxlength="4" required/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="bio" class="text-right h4 text-primary col-sm-2 col-form-label">Your Bio:</label>
+                                <div class="col-md-12">
+                                    <textarea class="form-control" rows="5" cols="10" name="bio" id="bio" placeholder="Enter a short bio..such as 'An education should empower a child and help him or her make a positive contribution to our world.'" maxlength="255" style="resize: none;"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="qualification" class="text-right h4 text-primary col-sm-2 col-form-label">Qualification:</label>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" name="qualification" id="qualification" placeholder="Enter your highest qualification" maxlength="20" required/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="profile" class="text-right h4 text-primary col-sm-5 col-form-label">Profile Picture:</label>
+                                <div class="col-md-4">
+                                    <input type="file" class="form-control" name="profile" id="profile" accept="image/x-png, image/jpg, image/jpeg" required/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="profile" class="text-right h4 text-primary col-sm-5 col-form-label">ID and Address Proof:</label>
+                                <div class="col-md-4">
+                                    <input type="file" class="form-control" name="id-proof" id="id-proof" accept="image/x-png, image/jpg, image/jpeg" required/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="profile" class="text-right h4 text-primary col-sm-5 col-form-label">Education Certificates:</label>
+                                <div class="col-md-4">
+                                    <input type="file" class="form-control" name="edu-proof" id="edu-proof" accept="image/x-png, image/jpg, image/jpeg" required/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <input type="text" name="form_id" id="form_id" value="<?php echo $vars; ?>" hidden/>
+                                <input type="text" name="form_type" id="form_type" value="1" hidden/>         
+                                <div class="col-md-12 text-center">
+                                    <button class=" btn btn-success btn-outline btn-lg" id="update-profile">Update Profile</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+<script>
+    $("#subject_select").on("change", "#class", function (event) {
+        event.preventDefault();
+        var class_value = $(this).val();
+        var class_id = $(this).attr("data-value");
+        var subject_id = "#subject" + class_id;
+        var subject = $(subject_id);
+        var id = '1';
+        $.ajax({
+            type: 'POST',
+            url: 'ajax.php',
+            data: {class: class_value, form_id: id},
+            success: function (data) {
+                subject.html(data);
+            },
+            error: function () {
+                alert("Oops!! Something went wrong, Please try again.");
+            }
+        });
+    }
+    );
+    var class_id = 1;
+    $("#subject_select").on("click", "#add", function (event) {
+        event.preventDefault();
+        class_id += 1;
+        var selectString = '<select class="btn" name="class[]" id="class" data-value="' + class_id + '" required style="padding:15px !important;background-color: #42464c;opacity:0.8; color:#fff !important; margin:10px !important;width: 60%;"> <option value="0">Select Class</option><option value="1">Nursery</option> <option value="2">KG</option> <option value="3">First</option> <option value="4">Second</option> <option value="5">Third</option> <option value="6">Fourth</option> <option value="7">Fifth</option> <option value="8">Sixth</option> <option value="9">Seventh</option> <option value="10">Eighth</option> <option value="11">Ninth</option> <option value="12">Tenth</option> <option value="13">Eleventh</option> <option value="14">Twelfth</option> </select> <select name="subject[]" id="subject' + class_id + '" required style="padding:15px !important;border:1px solid #ddd!important;border-top:none !important;border-radius:10px;margin: 10px;width: 60%;"></select>';
+        $("#subject_select").append(selectString);
+    });
+    $("#subject_select").on("click", "#remove", function (event) {
+        event.preventDefault();
+        var subject = "#subject" + class_id;
+        $(subject).remove();
+        $("#class:last-child").remove();
+        class_id -= 1;
+    });
+    $(function () {
+        $("#update-profile").click(function () {
+            if ($("#form_id").val() === "" || $("#contact").val() === "" || $("#address").val() === "" || $("#experience").val() === "" || $("#salary").val() === "" || $("#bio").val() === "" || $("#qualification").val() === "") {
+                alert("Please fill all fields with valid data..!!");
+                return false;
+            }
+        });
+    });
+</script>

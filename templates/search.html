@@ -1,0 +1,185 @@
+<div class="container">
+    <div class="row">
+        <br>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center" style="background-color:#353a42;font-size:1.2em;color:white;text-shadow: 0px 0px 1px black;"><span class="fa fa-search animated 1s swing"></span> You search Tutor For
+                </div>
+                <div class="panel-body" style="padding: 15px;">
+                    <span style="margin: 20px;" id="area" data-value="<?php echo $this->job[0]['area_id']; ?>"><span class="text-primary h4"><text style="font-size:1.0em "><span class="fa fa-map-marker" aria-hidden="true"></span> Area : </text></span><?php echo $this->job[0]["area_name"]; ?></span><br>
+                    <span style="margin: 20px;" id="class" data-value="<?php echo $this->job[0]['class_id']; ?>"><span class="text-primary h4"><text style="font-size:1.0em "><span class="fa fa-child" aria-hidden="true"></span> Class : </text></span><?php echo $this->job[0]["class_name"]; ?></span><br>
+                    <span style="margin: 20px;" id="subject" data-value="<?php echo $this->job[0]['subject_id']; ?>"><span class="text-primary h4"><text style="font-size:1.0em "><span class="fa fa-book" aria-hidden="true"></span> Subject : </text></span><?php echo $this->job[0]["subject_name"]; ?></span><br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php foreach($this->teachers as $teacher){ ?>
+    <div class="profile-container" style="padding:20px;margin:5px;box-shadow: inset 0px 0px 10px gray;border-top-left-radius:20px;border-top-right-radius: 20px;  ">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="text-center">
+                    <img src="picture.php?image=<?php echo $teacher['id']; ?>" class="img-thumbnail img-responsive" alt="profile-picture"/>
+                </div>
+                <blockquote class="pull-right">Bio: 
+                    <cite><small><?php echo $teacher["bio"]; ?></small></cite>
+                </blockquote>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <nav class="navbar"></nav>
+                </div>  
+                <div class="row">
+                    <div class="col-xs-4 text-center">
+                        <span class="text-muted h5" >Name</span>
+                    </div>
+                    <div class="col-xs-8">
+                        <span> : <?php echo $teacher["name"]; ?></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 text-center">
+                        <span class="text-muted h5" >Gender </span>
+                    </div>
+                    <div class="col-xs-8">
+                        <span> : <?php echo $teacher["gender"]; ?></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 text-center">
+                        <span class="text-muted h5" >Experience </span>
+                    </div>
+                    <div class="col-xs-8">
+                        <span> : <?php echo $teacher["experience"]; ?> Years</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 text-center">
+                        <span class="text-muted h5" >Qualification</span>
+                    </div>
+                    <div class="col-xs-8">
+                        <span> : <?php echo $teacher["qualification"]; ?></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-right">
+                            <button class=" btn btn-outline btn-primary" data-toggle="modal" data-target="#myModal" id="hire" value="<?php echo $teacher['id']; ?>">Hire Me</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>            
+    </div>
+    <br/>
+    <?php } ?>
+    <div id="myModal" class="modal fade" role="dialog" >
+        <div class="modal-dialog">
+            <div class="modal-content"  style="background:linear-gradient(#ddd, white); ">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="text-primary text-center">Fill your details...</h3>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" class="" id="job_details">
+                        <div class="form-row">
+                            <div class="col-md-12 ">
+                                <input type="text" class="form-control" placeholder="Enter name of the guardian" name="guardian" id="guardian" style="" required/>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <br>
+                                <input type="text" pattern="\d*" class="form-control" name="contact" id="contact" placeholder="Enter your mobile number" maxlength="10" minlength="10" required/>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <br>
+                                <input type="text" name="address" class="form-control" id="address" placeholder="Enter your address" maxlength="255" required/>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <br>
+                                <input type="text" pattern="\d*" class="form-control" name="salary" id="salary" placeholder="Enter maximum fees you're willing to pay" maxlength="4" required/>  
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <br>
+                                <label for="gender">Enter Teacher's Gender Preference</label>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-row">
+                                    <br>
+                                    <div data-toggle="buttons">
+                                        <label class="btn btn-default btn-circle btn-lg">
+                                            <input type="radio" name="gender" id="gender" value="Male" required/><i class="fa fa-user" style="font-size: 22px"></i></label>
+                                        <label class="btn btn-default btn-circle btn-lg">
+                                            <input type="radio" name="gender" id="gender" value="female" required/><i class="fa fa-female" style="font-size: 22px"></i></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-offset-8 col-md-4 text-right">
+                                <input type="text" id="t_id" value="" hidden/>
+                                <button name="submit" class="btn btn-outline btn-primary" >Submit Now</button> 
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).on("click", "#hire", function(event){
+        event.preventDefault();
+        var t_id = $(this).val();
+        $("#t_id").val(t_id);
+    });
+    
+    $(function(){
+        $("#job_details").submit(function(event){
+            event.preventDefault();
+            if(validate_job_details()){
+                var area = $("#area").data("value");
+                var classs = $("#class").data("value");
+                var subject = $("#subject").data("value");
+                var guardian = $("#guardian").val();
+                var contact = $("#contact").val();
+                var address = $("#address").val();
+                var gender = $("input:radio[name=gender]:checked").val();
+                var salary = $("#salary").val();
+                var t_id = $("#t_id").val();
+                var id = '2';
+                $.ajax({
+                type: 'POST',
+                    url: 'ajax.php',
+                    data: {area : area, form_id : id, class : classs, subject : subject, guardian : guardian, contact : contact, address : address, gender : gender, salary : salary, t_id : t_id},
+                    success: function(data){
+                        alert(data);
+                        window.location = "/";
+                    },
+                    error: function(){
+                        alert("Oops!! Something went wrong, Please try again.");
+                    }
+                });
+            }
+        });
+    });
+    
+    function validate_job_details(){
+        if($("#contact").val() === "" || $("#address").val() === "" || $("#salary").val() === "" || $("#guardian").val() === "" || $("#gender").val() === ""){
+            alert("Please fill all fields with valid data..!!");
+            return false;
+        }
+        if($("#t_id").val() === ""){
+            alert("Please select a teacher to continue..!!");
+            return false;
+        }
+        return true;
+    }
+</script>

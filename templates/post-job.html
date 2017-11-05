@@ -1,0 +1,265 @@
+<!-- CSS Files -->
+<link href="static/assets/css/paper-bootstrap-wizard.css" rel="stylesheet" />
+<!-- Fonts and Icons -->
+<link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+<link href="static/assets/css/themify-icons.css" rel="stylesheet">
+<!--   Big container   -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <!--      Wizard container        -->
+            <div class="wizard-container">
+                <div class="card wizard-card" data-color="red" id="wizard" style="border: 4px solid #f0f0f0; background-color: #FBFBFB;">
+                    <form method="POST" id="job_details">
+                        <!--        You can switch " data-color="green" "  with one of the next bright colors: "blue", "azure", "orange", "red"       -->
+                        <div class="wizard-header">
+                            <h3 class="wizard-title">Tell us about yourself!</h3>
+                            <p class="category">This information will let us know where to contact you.</p>
+                        </div>
+                        <div class="wizard-navigation">
+                            <div class="progress-with-circle">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="4" style="width: 15%;"></div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a href="#location" data-toggle="tab" style="color: #EB5E28 !important;">
+                                        <div class="icon-circle">
+                                            <i class="ti-map"></i>
+                                        </div>
+                                        Location
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#type" data-toggle="tab" style="color: #EB5E28 !important;">
+                                        <div class="icon-circle">
+                                            <i class="ti-direction-alt"></i>
+                                        </div>
+                                        Class & Subject
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#facilities" data-toggle="tab" style="color: #EB5E28 !important;">
+                                        <div class="icon-circle">
+                                            <i class="ti-panel"></i>
+                                        </div>
+                                        Contact Details
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#description" data-toggle="tab" style="color: #EB5E28 !important;">
+                                        <div class="icon-circle">
+                                            <i class="ti-comments"></i>
+                                        </div>
+                                        Finish
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane" id="location">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h5 class="info-text">Where do you live?</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-10 col-sm-offset-1">
+                                        <div class="form-group">
+                                            <label>City</label>
+                                            <input type="text" class="form-control" id="city" placeholder="Where is your place located?" value="Lucknow" disabled/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-10 col-sm-offset-1">
+                                        <div class="form-group">
+                                            <label>Area</label>
+                                            <select name="area" id="area" required class="form-control">
+                                                <option>Select Area</option>
+                                                <?php foreach($this->area as $area){ ?>
+                                                <option value="<?php echo $area['area_id']; ?>"><?php echo $area['area_name']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="type">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h5 class="info-text">Tell us the class and subject, you want the tutor for!</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-10 col-sm-offset-1">
+                                        <div class="form-group">
+                                            <label>Class</label>
+                                            <select name="class" id="class" data-value="1" required class="form-control">
+                                                <option value="0">Select Class</option>
+                                                <?php foreach($this->class as $class){ ?>
+                                                <option value="<?php echo $class['class_id']; ?>"><?php echo $class['class_name']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-10 col-sm-offset-1">
+                                        <div class="form-group">
+                                            <label>Subject</label>
+                                            <select name="subject" id="subject1" required class="form-control">
+                                                <option value="0">Select Subject</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="facilities">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h5 class="info-text">Tell us more about you!</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-5 col-sm-offset-1">
+                                        <div class="form-group">
+                                            <label>Guardian Name</label>
+                                            <input type="text" placeholder="Enter name of the guardian" name="guardian" id="guardian" required class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <div class="form-group">
+                                            <label>Contact Number</label>
+                                            <input type="text" pattern="\d*" name="contact" id="contact" placeholder="Enter your mobile number" maxlength="10" minlength="10" required class="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-5 col-sm-offset-1">
+                                        <div class="form-group">
+                                            <label>Address</label>
+                                            <input type="text" name="address" id="address" placeholder="Enter your address" maxlength="255" required class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <div class="form-group">
+                                            <label>Max Fee</label>
+                                            <input type="text" pattern="\d*" name="salary" id="salary" placeholder="Enter maximum fees you're willing to pay" maxlength="4" required class="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-10 col-sm-offset-1">
+                                        <div class="form-group text-center">
+                                            <label>Teacher's Gender Preference</label>
+                                            <div data-toggle="buttons">
+                                                <label class="btn btn-default btn-circle btn-lg">
+                                                    <input type="radio" name="gender" id="gender" value="Male"/><i class="fa fa-user" style="font-size: 22px"></i></label>
+                                                <label class="btn btn-default btn-circle btn-lg">
+                                                    <input type="radio" name="gender" id="gender" value="female" required/><i class="fa fa-female" style="font-size: 22px"></i></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="description">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h5 class="info-text">Almost Done!</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-10 col-sm-offset-1">
+                                        <div class="form-group text-justify">
+                                            <p><strong>Note: Please verify that the details entered by you is correct before submission!</strong></p>
+                                            <p>After you have verified the details, click on the finish button to post your requirements.</p>
+                                            <p>Once your posting has been verified by the admin, someone from our team will contact you for further action.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wizard-footer">
+                            <div class="pull-right">
+                                <input type='button' class='btn btn-next btn-fill btn-success btn-wd' name='next' value='Next' />
+                                <input type="text" id="t_id" value="41" hidden/>
+                                <input type='submit' class='btn btn-finish btn-fill btn-success btn-wd' name='finish' value='Finish' />
+                            </div>
+                            <div class="pull-left">
+                                <input type='button' class='btn btn-previous btn-default btn-wd' name='previous' value='Previous' />
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </form>
+                </div>
+            </div> <!-- wizard container -->
+        </div>
+    </div> <!-- row -->
+</div> <!--  big container -->
+<!--   Core JS Files   -->
+<script src="static/assets/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
+<!--  Plugin for the Wizard -->
+<script src="static/assets/js/paper-bootstrap-wizard.js" type="text/javascript"></script>
+<!--  More information about jquery.validate here: http://jqueryvalidation.org/	 -->
+<script src="static/assets/js/jquery.validate.min.js" type="text/javascript"></script>
+<script>
+    $(document).on("change", "#class", function (event) {
+        event.preventDefault();
+        var class_value = $(this).val();
+        var class_id = $(this).attr("data-value");
+        var subject_id = "#subject" + class_id;
+        var subject = $(subject_id);
+        var id = '1';
+        $.ajax({
+            type: 'POST',
+            url: 'ajax.php',
+            data: {class: class_value, form_id: id},
+            success: function (data) {
+                subject.html(data);
+            },
+            error: function () {
+                alert("Oops!! Something went wrong, Please try again.");
+            }
+        });
+    }
+    );
+</script>
+<script>
+    $(function () {
+        $("#job_details").submit(function (event) {
+            event.preventDefault();
+            if (validate_job_details()) {
+                var area = $("#area").val();
+                var classs = $("#class").val();
+                var subject = $("#subject1").val();
+                var guardian = $("#guardian").val();
+                var contact = $("#contact").val();
+                var address = $("#address").val();
+                var gender = $("input:radio[name=gender]:checked").val();
+                var salary = $("#salary").val();
+                var t_id = $("#t_id").val();
+                var id = '2';
+                $.ajax({
+                    type: 'POST',
+                    url: 'ajax.php',
+                    data: {area: area, form_id: id, class: classs, subject: subject, guardian: guardian, contact: contact, address: address, gender: gender, salary: salary, t_id: t_id},
+                    success: function (data) {
+                        alert(data);
+                        window.location = "/";
+                    },
+                    error: function () {
+                        alert("Oops!! Something went wrong, Please try again.");
+                    }
+                });
+            }
+        });
+    });
+
+    function validate_job_details() {
+        if ($("#contact").val() === "" || $("#address").val() === "" || $("#salary").val() === "" || $("#guardian").val() === "" || $("#gender").val() === "") {
+            alert("Please fill all fields with valid data..!!");
+            return false;
+        }
+        return true;
+    }
+</script>

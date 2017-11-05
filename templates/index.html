@@ -1,0 +1,357 @@
+<br/><br/>
+<div class="container-fluid"> 
+    <div class="Search-content" id="search-teacher">
+        <div class="row">
+            <div class="col-md-12 animated tada" id="logo_header">
+                <a href="/"><img src="static/images/logo_header.png" alt="logo header" class="img-responsive center-block"/></a>
+                <br/>
+            </div>
+        </div>
+        <br>
+        <div class="row center-block">
+            <form method="POST" action="search.php" class="form form-inline" >
+                <div class="col-md-1 col-sm-1"></div>
+                <div class="form-group col-md-2 col-sm-2" >
+                    <div class="select text-center">
+                        <select class="text-center" id="Sources" disabled>
+                            <option>Lucknow</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-2 col-sm-2">
+                    <div class="select">
+                        <select name="area" id="area" class="chosen-value" required>
+                            <option>Select Area</option>
+                            <?php foreach($this->area as $area){ ?>
+                            <option value="<?php echo $area['area_id']; ?>"><?php echo $area['area_name']; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-2 col-sm-2">
+                    <div class="select">
+                        <select name="class" class="sources" id="class" data-value="1" required>
+                            <option value="0">Select Class</option>
+                            <?php foreach($this->class as $class){ ?>
+                            <option value="<?php echo $class['class_id']; ?>"><?php echo $class['class_name']; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-2 col-sm-2">
+                    <div class="select">
+                        <select name="subject" id="subject1" class=" sources" required>
+                            <option value="0">Select Subject</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-2 col-sm-2">
+                    <input type="text" name="form_id" id="form_id" value="<?php echo $vars; ?>" hidden/>
+                    <input type="submit" class="btn btn-outline btn-primary btn-lg center-block animated 1s pulse" id="search" value="Search" style="width: 150px;box-shadow: 0px 0px 3px black" />
+                </div>
+                <div class="col-md-1 col-sm-1"></div>
+            </form>
+        </div><br/>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="jumbotron jumbotron-info-about">
+            <div class="img"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p class="h3" style="color:white;text-shadow:0px 0px 1px black">Does your kid needs a tutor?</p>
+                        <p style="font-size: 18px">
+                            Find an experienced teacher in your area with our help...
+                        </p>
+                        <br>
+                        <br>
+                        <a href="#search-teacher" class="btn btn-outline btn-danger multy-button">Baby Classes</a>
+                        <a href="#search-teacher" class="btn btn-outline btn-danger multy-button">Primary</a>
+                        <a href="#search-teacher" class="btn btn-outline btn-danger multy-button">Junior</a>
+                        <a href="#search-teacher" class="btn btn-outline btn-danger multy-button">Senior</a>
+                        <a href="#search-teacher" class="animated infinite bounce btn btn-link" style="color:crimson !important;">More...</a>
+                        <br>
+                        <br>          
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6" >
+            <img src="static/images/Board.jpg" class="img-responsive" width="100%" height="100%"/>
+        </div>
+        <div class="col-md-6 text-center">
+            <p class="text-muted h3">Worried about boards?</p>
+            <hr style="border-bottom:solid 1px #ddd;">
+            <i class="fa fa-handshake-o fa-4x" aria-hidden="true" style="color: crimson"></i>
+            <p class="h4">Don't worry, we'll help you get through it</p>
+            <span class="text-muted">Contact us, we have a number of experienced teacher's to help you prepare for it efficiently</span>
+            <br/>
+            <br/>
+            <span id="scroll-to-top">
+                <a href="#search-teacher" class="btn btn-outline btn-primary multy-button">9<sup>th</sup> / 11<sup>th</sup></a>
+                <a href="#search-teacher" class="btn btn-outline btn-primary multy-button">CBSE</a>
+                <a href="#search-teacher" class="btn btn-outline btn-primary multy-button">ICSE</a>
+                <a href="#search-teacher" class="btn btn-outline btn-primary multy-button">UP BOARD</a>
+                <hr style="border-bottom: solid 1px #ddd;"/>
+            </span>
+        </div>
+    </div>
+</div>
+<!-- Teachers -->
+<div class="container-fluid">
+    <div class="row well"> 
+        <div class="col-md-12">
+            <div id="myCarousel" class="vertical-slider carousel vertical slide col-md-12" data-ride="carousel">
+                <div class="row">
+                    <div class="col-md-5 ">
+                        <span data-slide="next" class="btn-vertical-slider fa fa-2x fa-angle-double-up" style="color:black;margin-left:47%;background-color: #ffb60c;padding:5px;width:28px;border-top-left-radius:25px;box-shadow: 0px 0px 10px black;border:1px solid #ddd"></span>
+                    </div>
+                    <div class="col-md-7"></div>
+                </div>
+                <br/>
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="row">
+                            <div class="col-md-5 text-center">
+                                <img src="static/images/Child.jpg" height="150px" width="150px" class="img-circle" alt="profile pic" style="border:3px solid #ddd;box-shadow:0px 0px 5px black;padding:5px;margin: 5px;"/>
+                            </div>
+                            <div class="col-md-7 ">
+                                <div style="margin:10px;">
+                                    <blockquote>Shiv Mohan</blockquote>
+                                    <text class="pull-left"><strong class="text-primary">Gender : </strong>Male</text><br>
+                                    <text class="pull-left"><strong class="text-primary">Experience : </strong>12 years</text><br>
+                                    <text class="pull-left"><strong class="text-primary">Qualification : </strong>Post-Graduate</text><br>
+                                    <br>
+                                    <br>
+                                    <strong>Bio : </strong>
+                                    <p>Good Teaching Skills, Good Teaching Experience And I Can Teach Upto Post-Graduation level(Computer Science & Maths).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php foreach($this->teachers as $teacher){ ?>
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-md-5 text-center">
+                                <img src="picture.php?image=<?php echo $teacher['id']; ?>" height="150px" width="150px" class="img-circle" alt="profile pic" style="border:3px solid #ddd;box-shadow:0px 0px 5px black;padding:5px;margin: 5px;"/>
+                            </div>
+                            <div class="col-md-7 ">
+                                <div style="margin:10px;">
+                                    <blockquote><?php echo $teacher['name']; ?></blockquote>
+                                    <text class="pull-left"><strong class="text-primary">Gender : </strong><?php echo $teacher['gender']; ?></text><br>
+                                    <text class="pull-left"><strong class="text-primary">Experience : </strong><?php echo $teacher['experience']; ?> years</text><br>
+                                    <text class="pull-left"><strong class="text-primary">Qualification : </strong><?php echo $teacher['qualification']; ?></text><br>
+                                    <br>
+                                    <br>
+                                    <strong>Bio : </strong>
+                                    <p><?php echo $teacher['bio']; ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-5">
+                        <span data-slide="prev" class="btn-vertical-slider fa fa-2x fa-angle-double-down" style="color:black;margin-left:47%;background-color: #ffb60c;padding:5px;width:28px;border-bottom-left-radius:25px;box-shadow: 0px 0px 10px black;border:1px solid #ddd"></span>
+                    </div>
+                    <div class="col-md-7"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Teachers -->
+<!-- Feedback -->
+<div class="container-fluid" id="feedback123">
+    <div class="row feedback-content">
+        <div class="col-md-1"></div>
+        <div class="col-md-5" >
+            <br>
+            <div class="media">
+                <div class="media-left media-top">
+                    <p class="feedback-icons faa-horizontal-animated"><i class="fa fa-address-book"></i></p>
+                </div>
+                <div class="media-body">
+                    <p><span class="feedback-text">Address</span></p>
+                    <h5>123/456 Nishatganj - Lucknow Uttar Pradesh</h5>
+                </div>
+            </div>
+            <div class="media">
+                <div class="media-left media-top">
+                    <p class="feedback-icons"><i class="fa fa-phone"></i></p>
+                </div>
+                <div class="media-body">
+                    <p><span class="feedback-text">Contact No.</span></p>
+                    <h5>0420-851275</h5>
+                </div>
+            </div>
+            <div class="media">
+                <div class="media-left media-top">
+                    <p class="feedback-icons"><i class="fa fa-envelope"></i></p>
+                </div>
+                <div class="media-body">
+                    <p><span class="feedback-text">Mail-us</span></p>
+                    <h5>mail@tuitionguruji.com</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="text-center" style="padding-top: 15px;">
+                <span class="text-center" style="font-size: 22px;color:#ffb60c;">
+                    We'd love <i class="animated infinite pulse fa fa-heart" style="color:red;text-shadow: 0px 0px 3px yellow"></i> to hear from you
+                </span>
+            </div>
+            <div class="text-center">
+                <form id="feedback">
+                    <div class="input-group center-block">
+                        <input type="text" id="fname" placeholder="First Name" class="text-center input-box" size="20" required>
+                        <input type="text" id="lname" placeholder="Last Name" class="text-center input-box" size="20" required>
+                    </div>
+                    <div class="input-group center-block">
+                        <input type="email" id="email" placeholder="Email" class="text-center input-box" size="20" required>
+                        <input type="text" id="topic" placeholder="Topic" class="text-center input-box" size="20" required>
+                    </div>
+                    <br>
+                    <div class="form-group center-block">
+                        <textarea id="message" rows="4" class="form-control" cols="50" placeholder="Your Message Here..." style="resize: none" required></textarea>
+                    </div>
+                    <div class="form-group center-block">
+                        <span id="response"></span>
+                    </div>
+                    <div class="form-group center-block">
+                        <input type="text" name="form_id" id="form_id" value="<?php echo $vars; ?>" hidden/>
+                        <button type="submit" class="btn btn-outline btn-danger center-block" style="width:200px;">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade animated 1s zoomInDown" role="dialog" style="margin-top: 5%;">
+        <div class="modal-dialog custom-modal" style="background: linear-gradient(#ddd,white); margin: auto !important;">
+            <!-- Modal content-->
+            <div class="modal-content" style=" background: linear-gradient(#ddd,white);">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title text-muted text-center animated infinite pulse">Welcome to TuitionGuruJi</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel panel-default" style="background-color: transparent;">
+                                <div class="panel-body text-center">
+                                    <img src="static/images/search2.gif" height="150" width="150"/>
+                                </div>
+                                <div class="panel-footer">
+                                    <h4 class="text-primary text-center ">Do you need a home tutor?</h4>
+                                    <h5 class="text-center text-muted" style="line-height: 1.5"> Awesome, we can help you find a perfect home tutor! Click on the button below to get started.</h5>
+                                    <div class="text-center" style="padding: 10px;">
+                                        <a href="search.php"><button class="btn btn-primary btn-outline">Get a Home Tutor <i class="fa fa-external-link" aria-hidden="true"></i></button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel panel-default" style="background-color: transparent;">
+                                <div class="panel-body text-center">
+                                    <img src="static/images/teacher2.gif" height="150" width="150"/>
+                                </div>
+                                <div class="panel-footer">
+                                    <h4 class="text-primary text-center ">or, you want to teach!</h4>
+                                    <h5 class="text-center text-muted" style="line-height: 1.5">We often have 500+ open Jobs for home tutors, click on the button below to check latest jobs and Apply.</h5>
+                                    <div class="text-center" style="padding: 10px;">
+                                        <a href="jobs.php"><button class="btn  btn-primary btn-outline">Find Tuition Jobs <i class="fa fa-briefcase " aria-hidden="true"></i></button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link text-primary" data-dismiss="modal"><i>No, I'm not ready yet</i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" id="mybutton" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="display:none;">Open Modal</button>
+    <!--Modal End-->
+</div>
+<script>
+    setTimeout(function(){
+            $("#mybutton").click();
+        }, 1000
+    );
+</script>
+<script>
+    $(document).ready(function () {
+        $('.btn-vertical-slider').on('click', function () {
+            if ($(this).attr('data-slide') === 'next') {
+                $('#myCarousel').carousel('next');
+            }
+            if ($(this).attr('data-slide') === 'prev') {
+                $('#myCarousel').carousel('prev');
+            }
+        });
+    });
+</script>
+<script>
+    function validateEmail($email) {
+        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,})?$/;
+        return emailReg.test($email);
+    }
+
+    $(document).on("submit", "#feedback", function (event) {
+        event.preventDefault();
+        var form_id = $("#form_id").val();
+        var fname = $("#fname").val();
+        var lname = $("#lname").val();
+        var email = $("#email").val();
+        var topic = $("#topic").val();
+        var message = $("#message").val();
+        if (form_id === "" || fname === "" || lname === "" || !validateEmail(email) || topic === "" || message === "") {
+            alert("Please fill all fields with valid data..!!");
+            return false;
+        }
+        $.ajax({
+            type: 'POST',
+            url: 'index.php',
+            data: {fname: fname, lname: lname, email: email, topic: topic, message: message, form_id: form_id},
+            success: function (data) {
+                $("#response").text(data);
+            },
+            error: function () {
+                alert("Oops!! Something went wrong, Please try again.");
+            }
+        });
+    }
+    );
+</script>
+<!-- Feedback -->
+<script>
+    $(document).on("change", "#class", function (event) {
+        event.preventDefault();
+        var class_value = $(this).val();
+        var class_id = $(this).attr("data-value");
+        var subject_id = "#subject" + class_id;
+        var subject = $(subject_id);
+        var id = '1';
+        $.ajax({
+            type: 'POST',
+            url: 'ajax.php',
+            data: {class: class_value, form_id: id},
+            success: function (data) {
+                subject.html(data);
+            },
+            error: function () {
+                alert("Oops!! Something went wrong, Please try again.");
+            }
+        });
+    }
+    );
+</script>

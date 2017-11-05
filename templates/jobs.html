@@ -1,0 +1,153 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <br>
+            <div>
+                <?php foreach($this->jobs as $job){ ?>
+                <div class="panel panel-default">
+                    <div Class="panel-heading" style="box-shadow: 0px 0px 1px gray; background-color: #353a42; color: whitesmoke; font-size: 18px;"><i class="fa fa-briefcase"></i> Available Tuition Jobs</div>
+                    <div class="panel-body">
+                        <span class="pull-right" id="job_id" data-value='<?php echo $job["job_id"]; ?>'><b>Job-ID #<?php echo $job["job_id"]; ?></b></span>
+                        <hr>
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <span id="area" data-value='<?php echo $job["area_id"]; ?>'><span class="h4 text-muted" style="font-size: 17px; padding: 10px;">Guardian</span></span>
+                            </div>
+                            <div class="col-xs-7">
+                                <span>: <?php echo $job["guardian"]; ?></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <span id="area" data-value='<?php echo $job["area_id"]; ?>'><span class="h4 text-muted" style="font-size: 17px; padding: 10px;">Area </span></span>
+                            </div>
+                            <div class="col-xs-7">
+                                <span>: <?php echo $job["area_name"]; ?></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <span id="class" data-value='<?php echo $job["class_id"]; ?>'><span class="h4 text-muted" style="font-size: 17px; padding: 10px;">Class </span></span>
+                            </div>
+                            <div class="col-xs-7">
+                                <span>  : <?php echo $job["class_name"]; ?></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <span id="subject" data-value='<?php echo $job["subject_id"]; ?>'><span class="h4 text-muted" style="font-size: 17px; padding: 10px;">Subject</span></span>
+                            </div>
+                            <div class="col-xs-7">
+                                <span>: <?php echo $job["subject_name"]; ?></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <span id="gender" data-value='<?php echo $job["gender"]; ?>'><span class="h4 text-muted" style="font-size: 17px; padding: 10px;">Preference</span></span>
+                            </div>
+                            <div class="col-xs-7">
+                                <span>: <?php echo $job["gender"]; ?></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <span id="gender" data-value='<?php echo $job["gender"]; ?>'><span class="h4 text-muted" style="font-size: 17px; padding: 10px;">Max fee</span></span>
+                            </div>
+                            <div class="col-xs-7">
+                                <span>: <?php echo $job["salary"]; ?></span><br>
+                            </div>
+                        </div>
+                        <button id="apply" class="btn btn-success btn-outline pull-right">Apply Now</button>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <br/>
+            <div class="content" style="min-height: 450px; position: fixed; background-image: url('static/images/school4.jpg'); background-size: cover; width: 50%; padding-top: 20px;">
+                <div class="row">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-6 text-center" style="padding: 20px;">
+                        <br/><br/><br/>
+                        <form method="POST" action="search.php">
+                            <small class="text-center" style="color: white; text-shadow: 0px 0px 1px black; font-size: 16px;">Search Tutor in your area</small>
+                            <hr style="border: none; margin-top: 0px !important; margin-bottom: 10px !important;">
+                            <div class="select row">
+                                <select class="col-md-12" name="area" id="area" required>
+                                    <option value="0">Select Area</option>
+                                    <?php foreach($this->area as $area){ ?>
+                                    <option value="<?php echo $area['area_id']; ?>"><?php echo $area['area_name']; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <br/>
+                            <div class="select row">
+                                <select class="col-md-12" name="class" id="class" data-value="1" required>
+                                    <option value="0">Select Class</option>
+                                    <?php foreach($this->class as $class){ ?>
+                                    <option value="<?php echo $class['class_id']; ?>"><?php echo $class['class_name']; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <br/>
+                            <div class="select row">
+                                <select class="col-md-12" name="subject" id="subject1" required><option value="0">Select Subject</option></select>
+                            </div>
+                            <br/>
+                            <input type="text" name="form_id" id="form_id" value="<?php echo $vars; ?>" hidden/>
+                            <input type="submit" class="btn btn-outline btn-success" id="search" value="Search"/>
+                        </form>
+                    </div>
+                    <div class="col-xs-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).on("click", "#class", function (event) {
+        event.preventDefault();
+        var class_value = $(this).val();
+        var class_id = $(this).attr("data-value");
+        var subject_id = "#subject" + class_id;
+        var subject = $(subject_id);
+        var id = '1';
+        $.ajax({
+            type: 'POST',
+            url: 'ajax.php',
+            data: {class: class_value, form_id: id},
+            success: function (data) {
+                subject.html(data);
+            },
+            error: function () {
+                alert("Oops!! Something went wrong, Please try again.");
+            }
+        });
+    }
+    );
+</script>
+<script>
+    $(document).on("click", "#apply", function (event) {
+        event.preventDefault();
+        var job_div = $(this).parent();
+        var job_id = $(job_div.children()[0]).data("value");
+        var id = '3';
+        $.ajax({
+            type: 'POST',
+            url: 'ajax.php',
+            data: {form_id: id, job_id: job_id},
+            success: function (data) {
+                if (data === "1") {
+                    alert("You need to login first before you can apply for this job..!!");
+                    window.location = "login.php";
+                } else {
+                    alert(data);
+                }
+            },
+            error: function () {
+                alert("Oops!! Something went wrong, Please try again.");
+            }
+        });
+    });
+</script>

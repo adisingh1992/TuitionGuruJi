@@ -1,0 +1,135 @@
+<div class="container-fluid" style="padding: 0 25px 0 25px;">
+    <br/>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2" style="box-shadow: 0px 0px 10px black; border-radius: 5px;">
+            <div class="row">
+                <div class="col-md-12" style="padding: 0 25px 0 25px;">
+                    <br/><br/>
+                    <b class="text-muted" style="opacity: 0.7;">Dashboard | <?php echo $_SESSION["user"]["fname"]; echo " ".$_SESSION["user"]["lname"]; ?></b><br/><br/>
+                    <cite class="text-success">A warm welcome from <strong>TuitionGuruJi</strong>, Check and update your profile... </cite>
+                    <br>
+                    <hr>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-3" style="margin-bottom: 20px; margin-top: 20px;">
+                    <img src="picture.php" class="img-responsive center-block" height="140px" width="140px" style="border: 7px ridge #ddd;"/>
+                </div>
+                <div class="col-md-9 text-center" style="border-left: 1px solid #ddd;">
+                    <h3><?php echo $_SESSION["user"]["fname"]; echo " ".$_SESSION["user"]["lname"]; ?></h3>
+                    <span class="text-danger fa fa-map-marker"></span>
+                    <span class="text-muted text-capitalize"><?php echo $this->user_details[0]["address"]; ?></span>
+                    <br>
+                    <br>
+                    <span class="fa fa-envelope fa-2x text-primary" aria-hidden="true"></span>
+                    <span class="text-primary" style="font-size:16px">&nbsp;<?php echo $_SESSION["user"]["email"]; ?></span>
+                    <br>
+                    <br>
+                    <span class="fa fa-phone fa-2x text-primary" aria-hidden="true"></span>
+                    <span class="text-primary" style="font-size:16px">&nbsp;<?php echo $this->user_details[0]["contact"]; ?></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="text-primary" style="font-size:18px">Gender :</span>
+                    <span class="text-primary"><?php echo $this->user_details[0]["gender"]; ?></span>
+                </div>
+            </div>
+            <br/><hr/>
+            <div class="row">
+                <div class="col-md-12">
+                    <blockquote class="text-justify">Bio : <small><i><?php echo $this->user_details[0]["bio"]; ?></i></small></blockquote>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center text-muted h3" style="margin: 10px;">Teaching Profile
+                        <i class="fa fa-bookmark"></i>
+                    </div>
+                    <hr/>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center" style="padding: 10px">
+                        <div class="img t_btn"><img src="static/images/salary.png" height="100px" width="100px" class="img-circle" style="box-shadow: 0px 0px 15px #7793ef; padding: 20px"></div>
+                        <br>
+                        <p class="h5 text-danger animated 1s jello" style="box-shadow: 0px 0px 8px black; padding:10px;">Expected Salary&nbsp;<i class="fa fa-angle-double-right" aria-hidden="true"></i>&nbsp;<?php echo $this->user_details[0]["salary"]; ?> </p>
+                        <br> 
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center" style="padding: 10px">
+                        <div class="img t_btn"><img src="static/images/experience.png" height="100px" width="100px" class="img-circle" style="box-shadow: 0px 0px 15px #7793ef;padding: 20px"></div>
+                        <br>
+                        <p class="h5 text-danger animated 1s jello" style="box-shadow: 0px 0px 8px black; padding:10px;">&nbsp;Experience&nbsp;<i class="fa fa-angle-double-right" aria-hidden="true"></i>&nbsp;<?php echo $this->user_details[0]["experience"]; ?>yrs. </p>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center" style="padding: 10px">
+                        <div class="img t_btn"><img src="static/images/bachelor.png" height="100px" width="100px" class="img-circle" style="box-shadow: 0px 0px 15px #7793ef;padding: 20px"></div>
+                        <br>
+                        <p class="h5 text-danger animated 1s jello" style="box-shadow: 0px 0px 8px black; padding:10px;">Qualification&nbsp;<i class="fa fa-angle-double-right" aria-hidden="true"></i>&nbsp;<?php echo $this->user_details[0]["qualification"]; ?> </p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <p class="text-center text-muted h3" style="margin: 10px;"><i class="fa fa-briefcase"></i> Jobs Applied To</p>
+                <hr style="margin: 10px;">
+                <br/>
+                <div class="col-md-12" style="padding: 0 20px 0 20px;">
+                    <?php foreach($this->jobs as $job){ ?>
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 panel panel-default">
+                            <div class="panel-heading"><b>Job-ID: #<?php echo $job["job_id"]; ?></b></div>
+                            <div class="panel-body row">
+                                <b class="col-md-2">Area: </b><div class="col-md-10"><?php echo $job["area_name"]; ?>, Lucknow</div><br/>
+                                <b class="col-md-2">Class: </b><div class="col-md-10"><?php echo $job["class_name"]; ?></div><br/>
+                                <b class="col-md-2">Subject: </b><div class="col-md-10"><?php echo $job["subject_name"]; ?></div>
+                            </div>
+                            <div class="panel-footer"></div>
+                        </div>
+                    </div>
+                    <?php } ?>
+                </div>
+            </div>
+            <div class="row">
+                <hr>
+                <div>
+                    <div style="padding:20px; ">
+                        <small class="text-primary"><i>Do you want to reset your password?</i></small>
+                        <strong class="text-success" id="flip">Change it now<img src="static/images/down.gif" height="20px" width="20px"/></strong><br>
+                        <br>
+                        <div style="padding: 20px;">
+                            <form method="POST" class="form form-inline" action="dashboard.php" id="panel">
+                                <div class="form-group">    
+                                    <input type="password" class="form-control" name="password" id="password" placeholder="Enter New Password"/>&nbsp;
+                                    <input type="text" class="form-control" name="confirm" id="confirm" placeholder="Confirm Password"/>
+                                    <input type="text" name="form_id" id="form_id" value="<?php echo $vars; ?>" hidden/>
+                                    <input type="text" name="form_type" id="form_type" value="2" hidden/>
+                                    <button class="btn btn-outline btn-primary" name="update-password" id="update-password" style="margin:5px;">Update Password</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <br/>
+</div>
+<script>
+    $(function () {
+        $("#update-password").click(function () {
+            if ($("#form_id").val() === "" || $("#password").val() === "" || $("#password").val() !== $("#confirm").val()) {
+                alert("Please fill all fields with valid data..!!");
+                return false;
+            }
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $("#flip").click(function () {
+            $("#panel").slideToggle("slow");
+        });
+    });
+</script>
