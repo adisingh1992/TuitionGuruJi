@@ -1,5 +1,11 @@
 <?php
     require_once 'database.php';
+
+    // Import PHPMailer classes into the global namespace
+    // These must be at the top of your script, not inside a function
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+
     $auth = new Authentication();
     $auth->dbConnect(conString, dbUser, dbPass);
 
@@ -131,34 +137,58 @@
             $stmt->execute([$email]);
             $code = $stmt->fetch();
 
-            require_once "Mail.php";
+            require 'src/PHPMailer.php';
+            require 'src/SMTP.php';
+            require 'src/Exception.php';
 
-            $from = "TuitionGuruJi<tuitionguruji@gmail.com>";
-            $to = "<".$email.">";
-            $subject = "Account Activation";
-            $body = '<h3>Welcome to TuitionGuruJi..!!</h3><p>Activate your account by clicking on the following link:</p><a href="https://www.tuitionguruji.com/activate.php?email='.$email.'&token='.$code['confirm_code'].'"><strong>ACTIVATE ACCOUNT<strong></a>';
-            
-            $host = "ssl://smtp.gmail.com";
-            $port = "465";
-            $username = "tuitionguruji@gmail.com";
-            $password = "abhi@tuitionguruji";
-            
-            $headers = array ('From' => $from,
-              'To' => $to,
-              'Subject' => $subject,
-              'MIME-Version' => 1,
-              'Content-type' => 'text/html;charset=iso-8859-1');
-            $smtp = Mail::factory('smtp',
-              array ('host' => $host,
-                'port' => $port,
-                'auth' => true,
-                'username' => $username,
-                'password' => $password));
+            //Create a new PHPMailer instance
+            $mail = new PHPMailer;
+            //Tell PHPMailer to use SMTP
+            $mail->isSMTP();
+            //Enable SMTP debugging
+            // 0 = off (for production use)
+            // 1 = client messages
+            // 2 = client and server messages
+            $mail->SMTPDebug = 0;
+            //Set the hostname of the mail server
+            $mail->Host = 'india.ownmyserver.com';
+            // use
+            // $mail->Host = gethostbyname('smtp.gmail.com');
+            // if your network does not support SMTP over IPv6
+            //Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
+            $mail->Port = 465;
+            //Set the encryption system to use - ssl (deprecated) or tls
+            $mail->SMTPSecure = 'ssl';
+            //Whether to use SMTP authentication
+            $mail->SMTPAuth = true;
+            //Username to use for SMTP authentication - use full email address for gmail
+            //$mail->Username = "tuitionguruji@gmail.com";
+            //Password to use for SMTP authentication
+            //$mail->Password = "abhi@tuitionguruji";
 
-            if($mail = $smtp->send($to, $headers, $body)){
-                return true;
-            }else{
+            $mail->Username = "mail@tuitionguruji.com";
+            //Password to use for SMTP authentication
+            $mail->Password = "alec177fig600";
+
+            //Set who the message is to be sent from
+            $mail->setFrom('mail@tuitionguruji.com', 'TuitionGuruJi');
+            //Set an alternative reply-to address
+
+            $mail->addReplyTo('mail@tuitionguruji.com', 'TuitionGuruJi');
+            //Set who the message is to be sent to
+            $mail->addAddress($email, 'TuitionGuruJi');
+            //Set the subject line
+            $mail->Subject = 'Account Activation';
+            //Read an HTML message body from an external file, convert referenced images to embedded,
+            //convert HTML into a basic plain-text alternative body
+            $mail->msgHTML('<h3>Welcome to TuitionGuruJi..!!</h3><p>Activate your account by clicking on the following link:</p><a href="https://www.tuitionguruji.com/activate.php?email='.$email.'&token='.$code['confirm_code'].'"><strong>ACTIVATE ACCOUNT<strong></a>');
+            //Replace the plain text body with one created manually
+            $mail->AltBody = '<h3>Welcome to TuitionGuruJi..!!</h3><p>Activate your account by clicking on the following link:</p><a href="https://www.tuitionguruji.com/activate.php?email='.$email.'&token='.$code['confirm_code'].'"><strong>ACTIVATE ACCOUNT<strong></a>';
+            //send the message, check for errors
+            if (!$mail->send()) {
                 return false;
+            } else {
+                return true;
             }
         }
 
@@ -168,7 +198,7 @@
         * @param string $confCode Confirmation code.
         * @return boolean of success.
         */
-        public function emailActivation($email,$confCode){
+        public function emailActivation($email, $confCode){
             $pdo = $this->pdo;
             $stmt = $pdo->prepare('UPDATE users SET confirmed = 1 WHERE email = ? and confirm_code = ?');
             $stmt->execute([$email, $confCode]);
