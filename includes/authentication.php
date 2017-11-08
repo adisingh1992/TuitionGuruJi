@@ -168,7 +168,7 @@
 
             $mail->Username = "mail@tuitionguruji.com";
             //Password to use for SMTP authentication
-            $mail->Password = "alec177fig600";
+            $mail->Password = "password";
 
             //Set who the message is to be sent from
             $mail->setFrom('mail@tuitionguruji.com', 'TuitionGuruJi');
