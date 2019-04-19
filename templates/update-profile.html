@@ -44,12 +44,15 @@
                             </div>
                             <div class="form-group row">
                                 <label for="area" class="h4  text-primary col-sm-2 col-form-label">Select Region:</label>
-                                <div class="col-md-5">
-                                    <select name="area[]" id="area[]" multiple="multiple" required style="box-shadow:inset 0px 0px 10px black !important;border-radius: 5px;padding:5px !important;">
+                                <div class="col-md-10" style="height: 100px; overflow: scroll;">
+                                    <div>
                                         <?php foreach($this->area as $area){ ?>
-                                        <option class="text-center" value="<?php echo $area['area_id']; ?>" style="border-bottom: 1px dashed #ddd"><?php echo $area['area_name']; ?></option>
+                                            <label style="font-weight: 100; margin: 5px;">
+                                                <?php echo $area['area_name']; ?>
+                                                <input type="checkbox" name="area[]" value="<?php echo $area['area_id']; ?>" />
+                                            </label>
                                         <?php } ?>
-                                    </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -65,18 +68,18 @@
                                             <option value="0">Select Class</option>
                                             <option value="1">Nursery</option>
                                             <option value="2">KG</option>
-                                            <option value="3">First</option>
-                                            <option value="4">Second</option>
-                                            <option value="5">Third</option>
-                                            <option value="6">Fourth</option>
-                                            <option value="7">Fifth</option>
-                                            <option value="8">Sixth</option>
-                                            <option value="9">Seventh</option>
-                                            <option value="10">Eighth</option>
-                                            <option value="11">Ninth</option>
-                                            <option value="12">Tenth</option>
-                                            <option value="13">Eleventh</option>
-                                            <option value="14">Twelfth</option>
+                                            <option value="3">I</sup></option>
+                                            <option value="4">II</option>
+                                            <option value="5">III</option>
+                                            <option value="6">IV</option>
+                                            <option value="7">V</option>
+                                            <option value="8">VI</option>
+                                            <option value="9">VII</option>
+                                            <option value="10">VIII</option>
+                                            <option value="11">IX</option>
+                                            <option value="12">X</option>
+                                            <option value="13">XI</option>
+                                            <option value="14">XII</option>
                                         </select>
                                         <br>
                                         <select class="" name="subject[]" id="subject1" required style="padding:15px !important;border:1px solid #ddd!important;border-top:none !important;border-radius:10px;margin: 10px;width: 60%;"></select>
