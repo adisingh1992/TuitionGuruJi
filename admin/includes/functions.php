@@ -65,4 +65,18 @@
         $query = "SELECT job.job_id, area_name, class_name, subject_name FROM job INNER JOIN area ON job.area_id = area.area_id INNER JOIN class ON job.class_id = class.class_id INNER JOIN subject ON job.subject_id = subject.subject_id INNER JOIN job_applied ON job.job_id = job_applied.job_id WHERE job_applied.teacher_id = ".$id." ORDER BY job.job_id desc";
         return $db->select($query);
     }
+    
+    function getAllAreasForUser($userId) {
+        $db = new Db();
+        $userId = $db->escape($userId);
+        $query = "SELECT area_name FROM `area` INNER JOIN teacher_area ON area.area_id = teacher_area.area_id WHERE teacher_area.user_id = ".$userId;
+        return $db->select($query);
+    }
+    
+    function getAllClassesForUser($userId) {
+        $db = new Db();
+        $userId = $db->escape($userId);
+        $query = "SELECT class.class_name FROM class INNER JOIN teacher_class_subject ON class.class_id = teacher_class_subject.class_id WHERE teacher_class_subject.user_id = ".$userId;
+        return $db->select($query);
+    }
 ?>
