@@ -1,0 +1,58 @@
+<pre>
+    <?php print_r($this->$teachers); ?>
+</pre>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <br>
+            <div>
+                <?php foreach($this->teachers as $teacher){ ?>
+                <div class="panel panel-default">
+                    <div Class="panel-heading" style="box-shadow: 0px 0px 1px gray; background-color: #353a42; color: whitesmoke; font-size: 18px;"><i class="fa fa-briefcase"></i> #<?php echo $teacher["id"]; ?> <?php echo $teacher["name"]; ?></div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="picture.php?image=<?php echo $teacher['id']; ?>" height="150px" width="150px" alt="profile pic" style="border:3px solid #ddd;box-shadow:0px 0px 5px black;padding:5px;margin: 5px;"/>
+                            </div>
+                            <div class="col-md-8">
+                                <br/>
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <span id="area" data-value='<?php echo $teacher["gender"]; ?>'><span class="h4 text-muted" style="font-size: 17px; padding: 10px;">Gender </span></span>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <span>: <?php echo $teacher["gender"]; ?></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <span id="class" data-value='<?php echo $teacher["experience"]; ?>'><span class="h4 text-muted" style="font-size: 17px; padding: 10px;">Experience </span></span>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <span>  : <?php echo $teacher["experience"]; ?> (Years)</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <span id="subject" data-value='<?php echo $teacher["qualification"]; ?>'><span class="h4 text-muted" style="font-size: 17px; padding: 10px;">Qualifications</span></span>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <span>: <?php echo $teacher["qualification"]; ?></span>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <blockquote>: <?php echo $teacher["bio"]; ?></blockquote>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+</div>
