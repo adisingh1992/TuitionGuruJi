@@ -29,6 +29,8 @@
         $view->render("header.html");
         $view->user = getUser($id);
         $view->jobs = getAppliedJobs($id);
+        $view->areas = getAllAreasForUser($id);
+        $view->classes = getAllClassesForUser($id);
         $view->render("user.html", $form_id);
         $view->render("footer.html");
     }
