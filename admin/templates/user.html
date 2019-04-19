@@ -30,8 +30,30 @@
                                 <a href="picture.php?image=<?php echo $this->user[0]['id']; ?>&name=edu-proof" target="_blank">View Education Certificate</a>
                             </div>
                         </div>
+                        <br/>
                         <div class="row">
-                            <div class="col-md-2 col-md-offset-8">
+                            <div class="col-md-12">
+                                <strong>Teacher Available For Areas: </strong>
+                                <?php
+                                    foreach($this->areas as $area) {
+                                        echo $area[ "area_name" ] . ", ";
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <strong>Teacher Interested In Teaching Classes: </strong>
+                                <?php
+                                    foreach($this->classes as $class) {
+                                        echo $class[ "class_name" ] . ", ";
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 col-md-offset-10">
                             <form action="user.php" method="POST">
                                 <input name="form_id" id="form_id" value="<?php echo $vars; ?>" hidden />
                                 <input name="user_id" id="user_id" value='<?php echo $this->user[0]["id"]; ?>' hidden />
